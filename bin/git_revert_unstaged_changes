@@ -1,0 +1,12 @@
+#!/bin/bash -e
+
+BASE_DIR=$(pwd)
+
+find . -mindepth 1 -maxdepth 1 -type d | while read line; do
+  FOLDER=$line
+  echo "Git: Reverting unstaged changes for $FOLDER"
+  cd $FOLDER
+  git reset HEAD .
+  git checkout -- .
+  cd $BASE_DIR
+done

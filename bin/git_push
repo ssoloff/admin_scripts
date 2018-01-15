@@ -1,0 +1,11 @@
+#!/bin/bash -e
+
+BASE_DIR=$(pwd)
+
+find . -mindepth 1 -maxdepth 1 -type d | while read line; do
+  FOLDER=$line
+  echo "Git: Push $FOLDER"
+  cd $FOLDER
+  git push
+  cd $BASE_DIR
+done
