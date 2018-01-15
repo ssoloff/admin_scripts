@@ -1,0 +1,11 @@
+#!/bin/bash -e
+
+BASE_DIR=$(pwd)
+
+find . -mindepth 1 -maxdepth 1 -type d | while read line; do
+  FOLDER=$line
+  echo "Git: Diff from origin/master for $FOLDER"
+  cd $FOLDER
+  git diff --stat origin/master...master
+  cd $BASE_DIR
+done
